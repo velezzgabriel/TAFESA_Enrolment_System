@@ -60,6 +60,11 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // override ToString
+        /// <summary>
+        /// Returns a string that contains the person's name, email address, phone number, and address in a formatted,
+        /// human-readable form.
+        /// </summary>
+        /// <returns>A string representation of the person that includes their name, email address, phone number, and address.</returns>
         public override string ToString()
         {
             return "Name: " + PersonName + ", Email: " + PersonEmail + ", Phone Number: " + PersonPhoneNumber + ", Address: " + PersonAddress;

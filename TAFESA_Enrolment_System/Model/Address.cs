@@ -70,6 +70,11 @@ namespace TAFESA_Enrolment_System.Model
 
 
         // override ToString
+        /// <summary>
+        /// Returns a string that represents the address, including the street number, street name, suburb, postcode,
+        /// and state in a human-readable format.
+        /// </summary>
+        /// <returns>A formatted string containing the street number, street name, suburb, postcode, and state of the address.</returns>
         public override string ToString()
         {
             return "Street Number: "+AddressStreetNum + ", Street Name: " + AddressStreetName + ", Suburb: " + AddressSuburb + ", Postcode: " + AddressPostcode + ", State: " + AddressState;

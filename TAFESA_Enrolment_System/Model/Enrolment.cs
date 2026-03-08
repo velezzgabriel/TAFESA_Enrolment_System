@@ -69,6 +69,12 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // override ToString
+        /// <summary>
+        /// Returns a string that represents the enrollment details, including the student ID, subject code, enrollment
+        /// date, grade, and semester.
+        /// </summary>
+        /// <returns>A formatted string containing the student ID, subject code, enrollment date, grade, and semester for the
+        /// enrollment.</returns>
         public override string ToString()
         {
             return "Student ID: " + EnrolmentStudentID + ", Subject Code: " + EnrolmentSubjectCode + ", Date Enrolled: " + EnrolmentDateEnrolled + ", Grade: " + EnrolmentGrade + ", Semester: " + EnrolmentSemester;

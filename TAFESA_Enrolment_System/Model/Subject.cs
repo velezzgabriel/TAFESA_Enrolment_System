@@ -52,6 +52,11 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // override ToString
+        /// <summary>
+        /// Returns a string that represents the subject, including its code, name, and cost.
+        /// </summary>
+        /// <returns>A string in the format "Subject Code: {SubjectCode}, Subject Name: {SubjectName}, Cost: {SubjectCost}" that
+        /// describes the subject.</returns>
         public override string ToString()
         {
             return "Subject Code: " + SubjectCode + ", Subject Name: " + SubjectName + ", Cost: " + SubjectCost;
