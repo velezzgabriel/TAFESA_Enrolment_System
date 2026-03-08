@@ -12,14 +12,14 @@ namespace TAFESA_Enrolment_System.Model
         protected const string DEF_NAME = "No name provided";
         protected const string DEF_EMAIL = "No email provided";
         protected const string DEF_PHONENUMBER = "No phone number provided";
-        protected const string DEF_ADDRESS = "No address provided";
+        protected static Address DEF_ADDRESS = new Address();
 
 
         // attributes
         private string name;
         private string email;
         private string phoneNumber;
-        private string address; // fk
+        private Address address; 
 
 
         // no args constructor
@@ -29,7 +29,7 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // all args constructor
-        public Person(string name, string email, string phoneNumber, string address)
+        public Person(string name, string email, string phoneNumber, Address address)
         {
             this.name = name;
             this.email = email;
@@ -53,7 +53,7 @@ namespace TAFESA_Enrolment_System.Model
             get { return phoneNumber; }
             set { phoneNumber = value; }
         }
-        public string PersonAddress
+        public Address PersonAddress
         {
             get { return address; }
             set { address = value; }

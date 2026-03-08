@@ -10,16 +10,16 @@ namespace TAFESA_Enrolment_System.Model
     {
 
         // constants for all attributes
-        const string DEF_STUDENTID = "No student ID provided";
-        const string DEF_SUBJECTCODE = "No subject code provided";
+        static Student DEF_STUDENTID = new Student();
+        static Subject DEF_SUBJECTCODE = new Subject();
         static DateTime DEF_DATEENROLLED = DateTime.Now;
         const string DEF_GRADE = "No grade provided";
         const int DEF_SEMESTER = 0;
 
 
         // attributes
-        private string studentID; //fk
-        private string subjectCode; // fk
+        private Student studentID; //fk
+        private Subject subjectCode; // fk
         private DateTime dateEnrolled;
         private string grade;
         private int semester;
@@ -32,7 +32,7 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // all args constructor
-        public Enrolment(string studentID, string subjectCode, DateTime dateEnrolled, string grade, int semester)
+        public Enrolment(Student studentID, Subject subjectCode, DateTime dateEnrolled, string grade, int semester)
         {
             this.studentID = studentID;
             this.subjectCode = subjectCode;
@@ -42,12 +42,12 @@ namespace TAFESA_Enrolment_System.Model
         }
 
         // Property Assessor Methods
-        public string EnrolmentStudentID
+        public Student EnrolmentStudentID
         {
             get { return studentID; }
             set { studentID = value; }
         }
-        public string EnrolmentSubjectCode
+        public Subject EnrolmentSubjectCode
         {
             get { return subjectCode; }
             set { subjectCode = value; }

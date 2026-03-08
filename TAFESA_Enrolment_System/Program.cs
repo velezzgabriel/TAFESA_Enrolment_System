@@ -26,6 +26,39 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine(student2);
             Console.WriteLine();
 
+            // Create address object for student 1,3,4,5
+            Address addressStudent1 = new Address(
+                "45",
+                "Cordoba Avenue",
+                "Glenelg",
+                "5045",
+                "SA"
+            );
+
+            Address addressStudent3 = new Address(
+                "12",
+                "King Street",
+                "Adelaide",
+                "5000",
+                "SA"
+            );
+
+            Address addressStudent4 = new Address(
+                "34",
+                "Queen Street",
+                "Adelaide",
+                "5000",
+                "SA"
+            );
+
+            Address addressStudent5 = new Address(
+                "56",
+                "Prince Street",
+                "Adelaide",
+                "5000",
+                "SA"
+            );
+
             // Test all-args constructor
             Student student3 = new Student(
                 "S2001",
@@ -34,7 +67,7 @@ namespace TAFESA_Enrolment_System
                 "Gabriel Velez",
                 "gabriel@email.com",
                 "0400000000",
-                "12 King Street"
+                addressStudent3
             );
 
             Console.WriteLine("student3 (all-args constructor):");
@@ -50,7 +83,7 @@ namespace TAFESA_Enrolment_System
             student1.PersonName = "Emily Smith";
             student1.PersonEmail = "emily@email.com";
             student1.PersonPhoneNumber = "0433333333";
-            student1.PersonAddress = "456 Oak Avenue";
+            student1.PersonAddress = addressStudent1;
 
             Console.WriteLine("student1 after setting properties:");
             Console.WriteLine("Student ID: " + student1.StudentID);
@@ -79,7 +112,7 @@ namespace TAFESA_Enrolment_System
                 "Another Name",
                 "another@email.com",
                 "0411111111",
-                "99 Another Street"
+                addressStudent4
             );
 
             Student student5 = new Student(
@@ -89,7 +122,7 @@ namespace TAFESA_Enrolment_System
                 "Ana Lopez",
                 "ana@email.com",
                 "0422222222",
-                "7 Main Road"
+                addressStudent5
             );
 
             Console.WriteLine("student3:");
@@ -145,12 +178,29 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine("===== TESTING PERSON CLASS =====");
             Console.WriteLine();
 
+            // Create address object for person 1 and 2
+            Address addressPerson1 = new Address(
+                "27",
+                "Sevilla Avenue",
+                "Melbourne",
+                "3000",
+                "VIC"
+            );
+
+            Address addressPerson2 = new Address(
+                "18",
+                "Valencia street",
+                "Adelaide",
+                "5000",
+                "SA"
+            );
+
             Person person1 = new Person();
             Person person2 = new Person(
                 "Carlos Ramirez",
                 "carlos.ramirez@email.com",
                 "0412345678",
-                "18 Valencia street, Adelaide"
+                addressPerson2
             );
 
             Console.WriteLine("person1 (no-args constructor):");
@@ -164,7 +214,7 @@ namespace TAFESA_Enrolment_System
             person1.PersonName = "Lucia Fernandez";
             person1.PersonEmail = "lucia.fernandez@email.com";
             person1.PersonPhoneNumber = "0498765432";
-            person1.PersonAddress = "27 Sevilla Avenue, Melbourne";
+            person1.PersonAddress = addressPerson1;
 
             Console.WriteLine("person1 after using property assessor methods:");
             Console.WriteLine("Name: " + person1.PersonName);
@@ -263,7 +313,7 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine();
 
             Enrolment enrolment1 = new Enrolment();
-            Enrolment enrolment2 = new Enrolment("S2001", "ICTPRG547",
+            Enrolment enrolment2 = new Enrolment(student1, subject1,
                 new DateTime(2026, 3, 8),
                 "Pass",
                 1
@@ -280,8 +330,8 @@ namespace TAFESA_Enrolment_System
             enrolment1.EnrolmentDateEnrolled = new DateTime(2026, 2, 15);
             enrolment1.EnrolmentGrade = "Fail";
             enrolment1.EnrolmentSemester = 2;
-            enrolment1.EnrolmentStudentID = "S5001";
-            enrolment1.EnrolmentSubjectCode = "DBS506";
+            enrolment1.EnrolmentStudentID = student2;
+            enrolment1.EnrolmentSubjectCode = subject2;
 
             Console.WriteLine("enrolment1 after using property assessor methods:");
             Console.WriteLine("StudentID: " + enrolment1.EnrolmentStudentID);

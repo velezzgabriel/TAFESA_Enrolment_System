@@ -35,7 +35,7 @@ namespace TAFESA_Enrolment_System.Model
 
         // all args constructor
         public Student(string studentID, string program, DateTime dateRegistered,
-               string name, string email, string phoneNumber, string address)
+               string name, string email, string phoneNumber, Address address)
     : base(name, email, phoneNumber, address)
         {
             this.studentID = studentID;
