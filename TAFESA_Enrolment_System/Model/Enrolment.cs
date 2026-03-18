@@ -9,48 +9,41 @@ namespace TAFESA_Enrolment_System.Model
     internal class Enrolment
     {
 
-        // constants for all attributes
-        static Student DEF_STUDENTID = new Student();
-        static Subject DEF_SUBJECTCODE = new Subject();
-        static DateTime DEF_DATEENROLLED = DateTime.Now;
+        // constants for non-object attributes      
         const string DEF_GRADE = "No grade provided";
         const int DEF_SEMESTER = 0;
 
 
         // attributes
-        private Student studentID; //fk
-        private Subject subjectCode; // fk
+        
+        private Subject subject; // fk
         private DateTime dateEnrolled;
         private string grade;
         private int semester;
 
 
         // no args constructor
-        public Enrolment() : this(DEF_STUDENTID, DEF_SUBJECTCODE, DEF_DATEENROLLED, DEF_GRADE, DEF_SEMESTER)
+        public Enrolment() : this(new Subject(), DateTime.Now, DEF_GRADE, DEF_SEMESTER)
         {
 
         }
 
         // all args constructor
-        public Enrolment(Student studentID, Subject subjectCode, DateTime dateEnrolled, string grade, int semester)
+        public Enrolment(Subject subject, DateTime dateEnrolled, string grade, int semester)
         {
-            this.studentID = studentID;
-            this.subjectCode = subjectCode;
-            this.dateEnrolled = dateEnrolled;
-            this.grade = grade;
-            this.semester = semester;
+            
+            EnrolmentSubject = subject;
+            EnrolmentDateEnrolled = dateEnrolled;
+            EnrolmentGrade = grade;
+            EnrolmentSemester = semester;
         }
 
         // Property Assessor Methods
-        public Student EnrolmentStudentID
+ 
+        public Subject EnrolmentSubject
         {
-            get { return studentID; }
-            set { studentID = value; }
-        }
-        public Subject EnrolmentSubjectCode
-        {
-            get { return subjectCode; }
-            set { subjectCode = value; }
+            get { return subject; }
+            set { subject = value; }
         }
         public DateTime EnrolmentDateEnrolled
         {
@@ -77,7 +70,7 @@ namespace TAFESA_Enrolment_System.Model
         /// enrollment.</returns>
         public override string ToString()
         {
-            return "Student ID: " + EnrolmentStudentID + ", Subject Code: " + EnrolmentSubjectCode + ", Date Enrolled: " + EnrolmentDateEnrolled + ", Grade: " + EnrolmentGrade + ", Semester: " + EnrolmentSemester;
+            return "Subject: " + EnrolmentSubject + ", Date Enrolled: " + EnrolmentDateEnrolled + ", Grade: " + EnrolmentGrade + ", Semester: " + EnrolmentSemester;
         }
 
 

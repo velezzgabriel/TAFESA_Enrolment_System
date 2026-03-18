@@ -8,11 +8,11 @@ namespace TAFESA_Enrolment_System.Model
 {
     internal class Person
     {
-        // constants for all attributes
+        // constants for non-object attributes
         protected const string DEF_NAME = "No name provided";
         protected const string DEF_EMAIL = "No email provided";
         protected const string DEF_PHONENUMBER = "No phone number provided";
-        protected static Address DEF_ADDRESS = new Address();
+        
 
 
         // attributes
@@ -23,7 +23,7 @@ namespace TAFESA_Enrolment_System.Model
 
 
         // no args constructor
-        public Person() : this(DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, DEF_ADDRESS)
+        public Person() : this(DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, new Address())
         {
 
         }
@@ -31,10 +31,10 @@ namespace TAFESA_Enrolment_System.Model
         // all args constructor
         public Person(string name, string email, string phoneNumber, Address address)
         {
-            this.name = name;
-            this.email = email;
-            this.phoneNumber = phoneNumber;
-            this.address = address;
+            PersonName = name;
+            PersonEmail = email;
+            PersonPhoneNumber = phoneNumber;
+            PersonAddress = address;
         }
 
         // Property Assessor Methods

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,35 +13,35 @@ namespace TAFESA_Enrolment_System.Model
         // constants for all attributes
         const string DEF_STUDENTID = "No student ID provided";
         const string DEF_PROGRAM = "No program provided";
-        static DateTime DEF_DATEREGISTERED = DateTime.Now;
+        
+        
 
 
         // attributes
         private string studentID;
         private string program;
         private DateTime dateRegistered;
+        private Enrolment enrolment;
 
 
         // no args constructor
-        public Student() : this(DEF_STUDENTID, DEF_PROGRAM, DEF_DATEREGISTERED, DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, DEF_ADDRESS)
+        public Student() : this(DEF_STUDENTID, DEF_PROGRAM, DateTime.Now, new Enrolment(), DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, new Address())
         {
-
         }
 
         // constructor with only studentID as an argument
-        public Student(string studentID) : this(studentID, DEF_PROGRAM, DEF_DATEREGISTERED, DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, DEF_ADDRESS)
+        public Student(string studentID) : this(studentID, DEF_PROGRAM, DateTime.Now,new Enrolment(), DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, new Address())
         {
-
         }
 
         // all args constructor
-        public Student(string studentID, string program, DateTime dateRegistered,
-               string name, string email, string phoneNumber, Address address)
+        public Student(string studentID, string program, DateTime dateRegistered, Enrolment enrolment, string name, string email, string phoneNumber, Address address)
     : base(name, email, phoneNumber, address)
         {
-            this.studentID = studentID;
-            this.program = program;
-            this.dateRegistered = dateRegistered;
+            StudentID = studentID;
+            StudentProgram = program;
+            StudentDateRegistered = dateRegistered;
+            StudentEnrolment = enrolment;
         }
 
 
@@ -62,6 +63,12 @@ namespace TAFESA_Enrolment_System.Model
             set { dateRegistered = value; }
         }
 
+        public Enrolment StudentEnrolment
+        {
+            get { return enrolment; }
+            set { enrolment = value; }
+        }
+
 
         /// <summary>
         /// Returns a string that represents the current student, including their ID, program, registration date, name,
@@ -70,7 +77,7 @@ namespace TAFESA_Enrolment_System.Model
         /// <returns>A formatted string containing the student's details, suitable for display or logging purposes.</returns>
         public override string ToString()
         {
-            return "Student ID: " + StudentID + ", Program: " + StudentProgram + ", Date Registered: " + StudentDateRegistered + ", Name: " + PersonName + ", Email: " + PersonEmail + ", Phone Number: " + PersonPhoneNumber + ", Address: " + PersonAddress;
+            return base.ToString() + ", Student ID: " + StudentID + ", Program: " + StudentProgram + ", Date Registered: " + StudentDateRegistered + ", Enrolment: " + StudentEnrolment;
 
         }
 
@@ -89,13 +96,21 @@ namespace TAFESA_Enrolment_System.Model
         /// false.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Student other)
-            {
-                return this.StudentID == other.StudentID;
-            }
+            if (obj == null)
+                return false;
 
-            return false;
+            if (ReferenceEquals(this, obj))
+                return true;
+
+            if (obj.GetType() != GetType())
+                return false;
+
+            Student other = (Student)obj;
+            return StudentID == other.StudentID;
         }
+
+
+
 
 
         /// <summary>
@@ -112,7 +127,7 @@ namespace TAFESA_Enrolment_System.Model
 
 
 
- 
+
         /// <summary>
         /// Determines whether two Student instances are considered equal based on their StudentID values.
         /// </summary>
@@ -124,11 +139,7 @@ namespace TAFESA_Enrolment_System.Model
         /// <returns><see langword="true"/> if both Student instances are equal; otherwise, <see langword="false"/>.</returns>
         public static bool operator ==(Student s1, Student s2)
         {
-            if (ReferenceEquals(s1, s2))
-                return true;
-            if (ReferenceEquals(s1, null) || ReferenceEquals(s2, null))
-                return false;
-            return s1.StudentID == s2.StudentID;
+            return object.Equals(s1, s2);
         }
 
 
@@ -143,9 +154,28 @@ namespace TAFESA_Enrolment_System.Model
         /// <returns>Returns <see langword="true"/> if the two instances are not equal; otherwise, <see langword="false"/>.</returns>
         public static bool operator !=(Student s1, Student s2)
         {
-            return !(s1 == s2);
+            return !object.Equals(s1, s2);
         }
 
+
+        /// <summary>
+        /// Determines whether two specified objects are equal.
+        /// </summary>
+        /// <remarks>This method first checks for reference equality. If both objects are null, they are
+        /// considered equal. If only one is null, they are not equal. If both are non-null, the method calls the Equals
+        /// method of the first object to determine equality.</remarks>
+        /// <param name="obj1">The first object to compare. This parameter can be null.</param>
+        /// <param name="obj2">The second object to compare. This parameter can be null.</param>
+        /// <returns><see langword="true"/> if the specified objects are equal; otherwise, <see langword="false"/>.</returns>
+        public static bool Equals(object obj1, object obj2)
+        {
+            if (obj1 == obj2)
+                return true;
+            if (obj1 == null || obj2 == null)
+                return false;
+            else
+                return obj1.Equals(obj2);
+        }
     }
 
 }

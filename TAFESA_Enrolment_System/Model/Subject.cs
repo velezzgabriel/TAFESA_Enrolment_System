@@ -8,7 +8,7 @@ namespace TAFESA_Enrolment_System.Model
 {
     internal class Subject
     {
-        // constants for all attributes
+        // constants for attributes
         const string DEF_SUBJECTCODE = "No subject code provided";
         const string DEF_SUBJECTNAME = "No subject name provided";
         const double DEF_COST = 0.0;
@@ -29,9 +29,9 @@ namespace TAFESA_Enrolment_System.Model
         // all args constructor
         public Subject(string subjectCode, string subjectName, double cost)
         {
-            this.subjectCode = subjectCode;
-            this.subjectName = subjectName;
-            this.cost = cost;
+            SubjectCode = subjectCode;
+            SubjectName = subjectName;
+            SubjectCost = cost;
         }
 
         // Property Assessor Methods

@@ -59,11 +59,41 @@ namespace TAFESA_Enrolment_System
                 "SA"
             );
 
+
+            Enrolment enrolmentStudent1 = new Enrolment(
+                new Subject("ICTWEB430", "Produce Server-Side Script for Dynamic Web Pages", 950.00),
+                new DateTime(2026, 2, 15),
+                "Pass",
+                2
+            );
+
+            Enrolment enrolmentStudent3 = new Enrolment(
+                new Subject("ICTPRG547", "Apply Advanced Programming Skills", 1200.00),
+                new DateTime(2026, 3, 8),
+                "Pass",
+                1
+            );
+
+            Enrolment enrolmentStudent4 = new Enrolment(
+                new Subject("ICTPRG547", "Apply Advanced Programming Skills", 1200.00),
+                new DateTime(2025, 1, 1),
+                "Fail",
+                2
+            );
+
+            Enrolment enrolmentStudent5 = new Enrolment(
+                new Subject("ICTPRG547", "Apply Advanced Programming Skills", 1200.00),
+                new DateTime(2026, 3, 8),
+                "Pass",
+                1
+            );
+
             // Test all-args constructor
             Student student3 = new Student(
                 "S2001",
                 "ICTPRG547",
                 new DateTime(2026, 3, 8),
+                enrolmentStudent3,
                 "Gabriel Velez",
                 "gabriel@email.com",
                 "0400000000",
@@ -80,6 +110,7 @@ namespace TAFESA_Enrolment_System
             student1.StudentID = "S3001";
             student1.StudentProgram = "ICTWEB430";
             student1.StudentDateRegistered = new DateTime(2026, 2, 1);
+            student1.StudentEnrolment = enrolmentStudent1;
             student1.PersonName = "Emily Smith";
             student1.PersonEmail = "emily@email.com";
             student1.PersonPhoneNumber = "0433333333";
@@ -89,16 +120,19 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine("Student ID: " + student1.StudentID);
             Console.WriteLine("Program: " + student1.StudentProgram);
             Console.WriteLine("Date Registered: " + student1.StudentDateRegistered);
+            Console.WriteLine("Enrolment: " + student1.StudentEnrolment);
             Console.WriteLine("Name: " + student1.PersonName);
             Console.WriteLine("Email: " + student1.PersonEmail);
             Console.WriteLine("Phone Number: " + student1.PersonPhoneNumber);
             Console.WriteLine("Address: " + student1.PersonAddress);
             Console.WriteLine();
 
-            Console.WriteLine("=== TESTING ToString() ===");
+            Console.WriteLine("=== TESTING ToString() on students ===");
             Console.WriteLine();
             Console.WriteLine(student1.ToString());
+            Console.WriteLine();
             Console.WriteLine(student2.ToString());
+            Console.WriteLine();
             Console.WriteLine(student3.ToString());
             Console.WriteLine();
 
@@ -109,6 +143,7 @@ namespace TAFESA_Enrolment_System
                 "S2001",
                 "Different Program",
                 new DateTime(2025, 1, 1),
+                enrolmentStudent4,
                 "Another Name",
                 "another@email.com",
                 "0411111111",
@@ -119,6 +154,7 @@ namespace TAFESA_Enrolment_System
                 "S5001",
                 "ICTPRG547",
                 new DateTime(2026, 3, 8),
+                enrolmentStudent5,
                 "Ana Lopez",
                 "ana@email.com",
                 "0422222222",
@@ -139,6 +175,7 @@ namespace TAFESA_Enrolment_System
 
             Console.WriteLine("student3.Equals(student4): " + student3.Equals(student4));
             Console.WriteLine("student3.Equals(student5): " + student3.Equals(student5));
+            Console.WriteLine("student4 == student5: " + (student4==student5));
             Console.WriteLine();
 
             Console.WriteLine("=== TESTING GetHashCode() ===");
@@ -313,7 +350,7 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine();
 
             Enrolment enrolment1 = new Enrolment();
-            Enrolment enrolment2 = new Enrolment(student1, subject1,
+            Enrolment enrolment2 = new Enrolment(subject1,
                 new DateTime(2026, 3, 8),
                 "Pass",
                 1
@@ -330,12 +367,11 @@ namespace TAFESA_Enrolment_System
             enrolment1.EnrolmentDateEnrolled = new DateTime(2026, 2, 15);
             enrolment1.EnrolmentGrade = "Fail";
             enrolment1.EnrolmentSemester = 2;
-            enrolment1.EnrolmentStudentID = student2;
-            enrolment1.EnrolmentSubjectCode = subject2;
+            enrolment1.EnrolmentSubject = subject2;
 
             Console.WriteLine("enrolment1 after using property assessor methods:");
-            Console.WriteLine("StudentID: " + enrolment1.EnrolmentStudentID);
-            Console.WriteLine("Subject Code: " + enrolment1.EnrolmentSubjectCode);
+            
+            Console.WriteLine("Subject Code: " + enrolment1.EnrolmentSubject);
             Console.WriteLine("Date Enrolled: " + enrolment1.EnrolmentDateEnrolled);
             Console.WriteLine("Grade: " + enrolment1.EnrolmentGrade);
             Console.WriteLine("Semester: " + enrolment1.EnrolmentSemester);

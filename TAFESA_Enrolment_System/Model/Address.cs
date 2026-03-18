@@ -32,11 +32,11 @@ namespace TAFESA_Enrolment_System.Model
         // all args constructor
         public Address (string streetNum, string streetName, string suburb, string postcode, string state)
         {
-            this.streetNum = streetNum;
-            this.streetName = streetName;
-            this.suburb = suburb;
-            this.postcode = postcode;
-            this.state = state;
+            AddressStreetNum = streetNum;
+            AddressStreetName = streetName;
+            AddressSuburb = suburb;
+            AddressPostcode = postcode;
+            AddressState = state;
         }
 
 
