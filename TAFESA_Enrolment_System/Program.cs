@@ -382,8 +382,110 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine(enrolment1.ToString());
             Console.WriteLine();
 
+            
+
+
+            // =========================
+            // debugging UnitTest TESTS
+            // =========================
+
+            Student[] students = new Student[]
+            {
+                new Student("STU005", "IT", new DateTime(2025, 1, 10), new Enrolment(), "Carlos Diaz", "carlos@email.com", "0400000001", new Address()),
+                new Student("STU002", "IT", new DateTime(2025, 1, 11), new Enrolment(), "Maria Lopez", "maria@email.com", "0400000002", new Address()),
+                new Student("STU009", "IT", new DateTime(2025, 1, 12), new Enrolment(), "Juan Perez", "juan@email.com", "0400000003", new Address()),
+                new Student("STU001", "IT", new DateTime(2025, 1, 13), new Enrolment(), "Ana Torres", "ana@email.com", "0400000004", new Address()),
+                new Student("STU007", "IT", new DateTime(2025, 1, 14), new Enrolment(), "Luis Ramirez", "luis@email.com", "0400000005", new Address()),
+                new Student("STU010", "IT", new DateTime(2025, 1, 15), new Enrolment(), "Sofia Mendoza", "sofia@email.com", "0400000006", new Address()),
+                new Student("STU003", "IT", new DateTime(2025, 1, 16), new Enrolment(), "Diego Castro", "diego@email.com", "0400000007", new Address()),
+                new Student("STU008", "IT", new DateTime(2025, 1, 17), new Enrolment(), "Elena Vargas", "elena@email.com", "0400000008", new Address()),
+                new Student("STU004", "IT", new DateTime(2025, 1, 18), new Enrolment(), "Pedro Salazar", "pedro@email.com", "0400000009", new Address()),
+                new Student("STU006", "IT", new DateTime(2025, 1, 19), new Enrolment(), "Camila Rojas", "camila@email.com", "0400000010", new Address())
+            };
+
+            Console.WriteLine("=== == TESTING UnitTest TESTS on students array == ===");
+            Console.WriteLine();
+            Console.WriteLine(students[0].ToString());
+            Console.WriteLine();
+            Console.WriteLine(students[1].ToString());
+            Console.WriteLine();
+            Console.WriteLine("Students[0]: " + students[0].StudentID + "  //  Students[1]: " + students[1].StudentID);
+            Console.WriteLine("students[0] == students[1] " + (students[0] == students[1]));
+            Console.WriteLine("students[0] != students[1] " + (students[0] != students[1]));
+            Console.WriteLine("students[0] > students[1] " + (students[0] > students[1]));
+            Console.WriteLine("students[0] >= students[1] " + (students[0] >= students[1]));
+            Console.WriteLine("students[0] < students[1] " + (students[0] < students[1]));
+            Console.WriteLine("students[0] <= students[1] " + (students[0] <= students[1]));
+            Console.WriteLine();
+
+
+
+            // LINEAR SEARCH FOUND
+            Student target = students[3];
+            int result = Utility.LinearSeachArray(students, target);
+
+            Console.WriteLine("Linear search target found(STU001)....");
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine();
+
+            // LINEAR SEARCH NOT FOUND
+            Student target2 = new Student("STU999", "IT", DateTime.Now, new Enrolment(), "Not Found", "none@email.com", "0499999999", new Address());
+            int result2 = Utility.LinearSeachArray(students, target2);
+ 
+            Console.WriteLine("Linear search target NOT found(STU999)....");
+            Console.WriteLine("Result: " + result2);
+            Console.WriteLine();
+
+            // PRINTING STUDENTS BEFORE SORTING
+            Console.WriteLine("Printing students before Selection Sort Ascending... ");
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine(students[i].StudentID);
+
+            }
+
+            // SELECTION SORT ASCENDING
+            Utility.SelectionSortAscending(students);
+            Console.WriteLine();
+            Console.WriteLine("Printing students after Selection Sort Ascending... ");
+
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine(students[i].StudentID);
+
+            }
+
+
+            // BINARY SEARCH TARGET FOUND
+            Student target3 = students[3];
+            int result3 = Utility.BinarySearchArray(students, target3);
+
+            Console.WriteLine();
+            Console.WriteLine("Binary Search target found (STU004)... ");
+            Console.WriteLine("Result: " + result3);
+
+            // BINARY SEARCH TARGET NOT FOUND
+            Student target4 = new Student("STU999", "IT", DateTime.Now, new Enrolment(), "Not Found", "none@email.com", "0499999999", new Address());
+            int result4 = Utility.BinarySearchArray(students, target4);
+
+            Console.WriteLine();
+            Console.WriteLine("Binary Search target NOT found (STU999)... ");
+            Console.WriteLine("Result: " + result4);
+
+            // SELECTION SORT DESCENDING
+            Utility.SelectionSortDescending(students);
+            Console.WriteLine();
+            Console.WriteLine("Printing students after Selection Sort Descending... ");
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine(students[i].StudentID);
+
+            }
+
+            Console.WriteLine();
             Console.WriteLine("Testing complete. Press any key to exit...");
             Console.ReadKey();
+
 
 
         }

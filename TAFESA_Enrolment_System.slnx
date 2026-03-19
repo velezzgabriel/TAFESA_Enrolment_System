@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="TAFESA_Enrolment_System.Model/TAFESA_Enrolment_System.Model.csproj" Id="8785f48f-4dbc-4db8-81dd-29f7a6f524a8" />
+  <Project Path="TAFESA_Enrolment_System.Tests/TAFESA_Enrolment_System.Tests.csproj" Id="b03a5387-7be5-4b15-be4a-76fcb24d765f" />
   <Project Path="TAFESA_Enrolment_System/TAFESA_Enrolment_System.csproj" Id="a80b48df-cfaa-49fa-9ed9-9a753229e18d" />
 </Solution>
