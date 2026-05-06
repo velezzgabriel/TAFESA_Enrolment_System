@@ -405,9 +405,9 @@ namespace TAFESA_Enrolment_System
 
             Console.WriteLine("=== == TESTING UnitTest TESTS on students array == ===");
             Console.WriteLine();
-            Console.WriteLine(students[0].ToString());
+            Console.WriteLine(students[0]);
             Console.WriteLine();
-            Console.WriteLine(students[1].ToString());
+            Console.WriteLine(students[1]);
             Console.WriteLine();
             Console.WriteLine("Students[0]: " + students[0].StudentID + "  //  Students[1]: " + students[1].StudentID);
             Console.WriteLine("students[0] == students[1] " + (students[0] == students[1]));
@@ -464,6 +464,7 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine("Binary Search target found (STU004)... ");
             Console.WriteLine("Result: " + result3);
 
+            /*
             // BINARY SEARCH TARGET NOT FOUND
             Student target4 = new Student("STU999", "IT", DateTime.Now, new Enrolment(), "Not Found", "none@email.com", "0499999999", new Address());
             int result4 = Utility.BinarySearchArray(students, target4);
@@ -485,7 +486,7 @@ namespace TAFESA_Enrolment_System
             Console.WriteLine();
             Console.WriteLine("Testing complete. Press any key to exit...");
             Console.ReadKey();
-
+            */
 
 
         }

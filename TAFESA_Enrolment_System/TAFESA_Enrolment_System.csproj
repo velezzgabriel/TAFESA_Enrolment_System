@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\Enrolment.cs" />
-    <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\Student.cs" />
-    <Compile Include="Model\Subject.cs" />
-    <Compile Include="Model\Utility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

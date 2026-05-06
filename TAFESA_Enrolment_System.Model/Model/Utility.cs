@@ -24,9 +24,11 @@ namespace TAFESA_Enrolment_System.Model
         /// <returns>The index of the target if found; otherwise -1.</returns>
         public static int LinearSeachArray<T>(T[] array, T target) where T : IComparable<T>
         {
+            try
+            {
                 if (array == null)
                     throw new ArgumentNullException(nameof(array), "Array cannot be null.");
-                
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     if (array[i].CompareTo(target) == 0)
@@ -34,6 +36,25 @@ namespace TAFESA_Enrolment_System.Model
                 }
 
                 return -1;
+            }
+            catch (ArgumentNullException ex)
+            {
+                // Caller passed a null array — print specific message and signal failure
+                Console.WriteLine("Linear search error – null array: " + ex.Message);
+                return -1;
+            }
+            catch (InvalidOperationException ex)
+            {
+                // CompareTo on an element failed (e.g. incompatible types at runtime)
+                Console.WriteLine("Linear search error – comparison failed: " + ex.Message);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                // Catch-all for any other unexpected runtime error
+                Console.WriteLine("Linear search unexpected error: " + ex.Message);
+                return -1;
+            }
         }
 
         /// <summary>
@@ -56,6 +77,8 @@ namespace TAFESA_Enrolment_System.Model
         /// <returns>The index of the target if found; otherwise -1.</returns>
         public static int BinarySearchArray<T>(T[] array, T target) where T : IComparable<T>
         {
+            try
+            {
                 if (array == null)
                     throw new ArgumentNullException(nameof(array), "Array cannot be null.");
 
@@ -68,22 +91,37 @@ namespace TAFESA_Enrolment_System.Model
                     int comparison = array[mid].CompareTo(target);
 
                     if (comparison == 0)
-                    {
                         return mid;
-                    }
 
-                    if (comparison < 0)
-                    {
-                        min = mid + 1;
-                    }
-                    else
-                    {
+                    // error introduced here for debugging purposes
+                    if (comparison > 0)
+                        //min = mid + 1;
                         max = mid - 1;
-                    }
+                    else
+                        //max = mid - 1;
+                        min = mid + 1;
                 }
 
                 return -1;
-            
+            }
+            catch (ArgumentNullException ex)
+            {
+                // Caller passed a null array
+                Console.WriteLine("Binary search error – null array: " + ex.Message);
+                return -1;
+            }
+            catch (InvalidOperationException ex)
+            {
+                // CompareTo on an element failed
+                Console.WriteLine("Binary search error – comparison failed: " + ex.Message);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                // Catch-all for any other unexpected runtime error
+                Console.WriteLine("Binary search unexpected error: " + ex.Message);
+                return -1;
+            }
         }
 
         /// <summary>

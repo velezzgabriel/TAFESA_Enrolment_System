@@ -1,5 +1,6 @@
 ﻿
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System;
 using System.Net;
 using TAFESA_Enrolment_System.Model;
@@ -53,7 +54,7 @@ namespace TAFESA_Enrolment_System.Tests
         public void BinarySearchArray_FoundStudent_ReturnsCorrectIndex()
         {
             Utility.SelectionSortAscending(students);
-            Student target = new Student("STU006", "IT", DateTime.Now, new Enrolment(), "Any Name", "any@email.com", "0400000000", new Address());
+            Student target = new Student("STU006", "IT", new DateTime(2025, 1, 19), new Enrolment(), "Camila Rojas", "camila@email.com", "0400000010", new Address());
 
             int result = Utility.BinarySearchArray(students, target);
 
@@ -76,15 +77,39 @@ namespace TAFESA_Enrolment_System.Tests
         {
             Utility.SelectionSortAscending(students);
 
-            string[] expected =
+            Student[] ascendingExpected = new Student[]
             {
-                "STU001", "STU002", "STU003", "STU004", "STU005",
-                "STU006", "STU007", "STU008", "STU009", "STU010"
+                new Student("STU001"),
+                new Student("STU002"),
+                new Student("STU003"),
+                new Student("STU004"),
+                new Student("STU005"),
+                new Student("STU006"),
+                new Student("STU007"),
+                new Student("STU008"),
+                new Student("STU009"),
+                new Student("STU010")
             };
 
+            Student[] descendingExpected = new Student[]
+            {
+                new Student("STU010"),
+                new Student("STU009"),
+                new Student("STU008"),
+                new Student("STU007"),
+                new Student("STU006"),
+                new Student("STU005"),
+                new Student("STU004"),
+                new Student("STU003"),
+                new Student("STU002"),
+                new Student("STU001")
+            };
+
+   
             for (int i = 0; i < students.Length; i++)
             {
-                Assert.That(students[i].StudentID, Is.EqualTo(expected[i]));
+                Assert.That(students[i], Is.EqualTo(ascendingExpected[i]));
+                //Assert.That(students[i], Is.EqualTo(descendingExpected[i]));
             }
         }
 
@@ -93,16 +118,44 @@ namespace TAFESA_Enrolment_System.Tests
         {
             Utility.SelectionSortDescending(students);
 
-            string[] expected =
+            Student[] ascendingExpected = new Student[]
             {
-                "STU010", "STU009", "STU008", "STU007", "STU006",
-                "STU005", "STU004", "STU003", "STU002", "STU001"
+                new Student("STU001"),
+                new Student("STU002"),
+                new Student("STU003"),
+                new Student("STU004"),
+                new Student("STU005"),
+                new Student("STU006"),
+                new Student("STU007"),
+                new Student("STU008"),
+                new Student("STU009"),
+                new Student("STU010")
             };
 
+            Student[] descendingExpected = new Student[]
+            {
+                new Student("STU010"),
+                new Student("STU009"),
+                new Student("STU008"),
+                new Student("STU007"),
+                new Student("STU006"),
+                new Student("STU005"),
+                new Student("STU004"),
+                new Student("STU003"),
+                new Student("STU002"),
+                new Student("STU001")
+            };
+
+            
             for (int i = 0; i < students.Length; i++)
             {
-                Assert.That(students[i].StudentID, Is.EqualTo(expected[i]));
+                //Assert.That(students[i], Is.EqualTo(ascendingExpected[i]));
+                Assert.That(students[i], Is.EqualTo(descendingExpected[i]));
             }
+        
         }
+
+
+
     }
 }

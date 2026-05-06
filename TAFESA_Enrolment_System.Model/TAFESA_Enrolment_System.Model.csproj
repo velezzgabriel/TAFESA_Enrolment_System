@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data_structures_model\BinarySearchTree.cs" />
+    <Compile Include="Data_structures_model\DoubleLinkedList.cs" />
+    <Compile Include="Data_structures_model\SingleLinkedList.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Enrolment.cs" />
     <Compile Include="Model\Person.cs" />
